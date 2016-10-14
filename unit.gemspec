@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'unit/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "unit"
+  spec.name          = "kitcheck-unit"
   spec.version       = Unit::VERSION
   spec.authors       = ["Christian Doyle"]
   spec.email         = ["christian@kitcheck.com"]
