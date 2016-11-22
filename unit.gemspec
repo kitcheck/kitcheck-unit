@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Christian Doyle"]
   spec.email         = ["christian@kitcheck.com"]
   spec.description   = %q{Same unit handling for Ruby}
-  spec.summary       = %q{Same unit handling for Ruby}
-  spec.homepage      = ""
+  spec.summary       = %q{Tools for handeling units and conversions}
+  spec.homepage      = "http://kitcheck.com"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -29,10 +29,10 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '~> 2.0'
 
   spec.add_development_dependency "bundler", "~> 1.3"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "shoulda", "~> 3.5.0"
-  spec.add_development_dependency 'pry', '~> 0.10.0'
-  spec.add_development_dependency 'pry-byebug', '2.0.0'
-  spec.add_development_dependency 'racc'
-  spec.add_development_dependency 'rexical'
+  spec.add_development_dependency "rake", "~> 11.1"
+  spec.add_development_dependency "shoulda", "~> 3.5"
+  spec.add_development_dependency 'pry', '~> 0.10'
+  spec.add_development_dependency 'pry-byebug', '2.0'
+  spec.add_development_dependency 'racc', "~> 1.4"
+  spec.add_development_dependency 'rexical', "~> 1.0"
 end
