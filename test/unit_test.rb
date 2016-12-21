@@ -26,6 +26,10 @@ class UnitTest < Minitest::Test
         @u1 / @u2
       end
     end
+
+    should "return false when comparing against nil" do
+      assert_equal false, @u1 == nil
+    end
   end
 
   context "multiplying" do

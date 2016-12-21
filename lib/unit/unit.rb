@@ -52,7 +52,7 @@ module Unit
     private
 
     def check_compatibility(operation, other)
-      if self.uom != other.uom && other.is_a?(Unit)
+      if other && (self.uom != other.uom && other.is_a?(Unit))
         raise_incompatible_error(operation)
       end
     end
