@@ -2,6 +2,7 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'unit/version'
+require 'unit'
 
 Gem::Specification.new do |spec|
   spec.name          = "kitcheck-unit"
