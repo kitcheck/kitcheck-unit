@@ -1,6 +1,38 @@
 require 'test_helper'
 
 class UnitTest < Minitest::Test
+  
+  context "same unit and strength" do
+    setup do
+      @u1 = Unit::Unit.new(1, 'ea')
+      @u2 = Unit::Unit.new(1, 'ea')
+    end
+
+    should "be equal" do
+      assert @u1.eql? @u2
+    end
+
+    should "be grouped together in group_by" do
+      array = [{
+        :item => 'item1', :package_size => @u1},
+        {:item => 'item2', :package_size => @u2}
+      ]
+
+      assert_equal 1, array.group_by{|i| i[:package_size]}.size
+    end
+  end
+
+  context "different but compatible units" do
+    setup do
+      @u1 = Unit.parse('100 mcg')
+      @u2 = Unit.parse('0.1 mg')
+    end
+
+    should "be equal" do
+      assert @u1.eql? @u2
+    end
+  end
+
   context "different units" do
     setup do
       @u1 = Unit::Unit.new(1, 'ea')

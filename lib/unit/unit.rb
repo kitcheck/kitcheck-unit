@@ -42,6 +42,11 @@ module Unit
     end
     alias_method :>>, :convert_to
 
+    def eql?(other)
+      check_compatibility("compare", other)
+      super(other)
+    end
+
     def self.equivalise(u1, u2)
       if u1.uom != u2.uom && other.is_a?(Unit)
         raise_incompatible_error("compare")

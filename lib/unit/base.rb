@@ -116,6 +116,10 @@ module Unit
       self.class.new(self.scalar.abs, self.uom)
     end
 
+    def eql?(other)
+      (self <=> other) == 0
+    end
+
     def mass?
       Mass.scale_hash.keys.include? self.uom
     end
