@@ -12,6 +12,10 @@ class UnitTest < Minitest::Test
       assert @u1.eql? @u2
     end
 
+    should "have the same hash" do
+      assert_equal @u1.hash, @u2.hash
+    end
+
     should "be grouped together in group_by" do
       array = [{
         :item => 'item1', :package_size => @u1},
