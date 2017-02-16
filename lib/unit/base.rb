@@ -19,6 +19,10 @@ module Unit
       self.class.scale_hash
     end
 
+    def hash
+      scalar.hash ^ uom.hash
+    end
+
     def validate_uom(uom)
       if self.scale_hash.keys.include? uom
         uom
@@ -114,6 +118,10 @@ module Unit
 
     def abs
       self.class.new(self.scalar.abs, self.uom)
+    end
+
+    def eql?(other)
+      (self <=> other) == 0
     end
 
     def mass?
