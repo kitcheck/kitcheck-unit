@@ -5,4 +5,5 @@ AllCops:
     - 'lib/unit/*.rb'
   Exclude:
 
-  RunRailsCops: true
+  Rails:
+    Enabled: true
