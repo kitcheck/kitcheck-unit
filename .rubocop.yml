@@ -3,6 +3,6 @@ inherit_from: .rubocop_todo.yml
 AllCops:
   Include:
     - 'lib/unit/*.rb'
-  Exclude:
 
-  RunRailsCops: true
+Rails:
+  Enabled: true
