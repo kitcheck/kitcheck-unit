@@ -5,5 +5,5 @@ AllCops:
     - 'lib/unit/*.rb'
   Exclude:
 
-  Rails:
-    Enabled: true
+Rails:
+  Enabled: true

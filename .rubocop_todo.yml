@@ -221,7 +221,7 @@ Style/SignalException:
 
 # Offense count: 4
 # Cop supports --auto-correct.
-Style/SingleSpaceBeforeFirstArg:
+Style/SpaceBeforeFirstArg:
   Enabled: false
 
 # Offense count: 6
