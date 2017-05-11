@@ -15,6 +15,15 @@ module Unit
       end
     end
 
+    def hash
+      numerator.hash ^ denominator.hash
+    end
+
+    def eql?(other)
+      con1, con2 = Concentration.equivalise(self, other)
+      con1 == con2
+    end
+
     def +(other)
       use_operator_on_other(:+, other)
     end
