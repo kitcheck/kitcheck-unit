@@ -321,4 +321,31 @@ class ConcentrationTest < Minitest::Test
       end
     end
   end
+
+  context "hash" do
+    setup do
+      num = Unit::Mass.new(2, 'mg')
+      denom = Unit::Volume.new(1, 'ml')
+      @con1 = Unit::Concentration.new(num, denom)
+      @con2 = Unit::Concentration.new(num, denom)
+    end
+
+    should "correctly hash instances with the same attributes" do
+      assert_equal @con1.hash, @con2.hash
+    end
+  end
+
+  context "eql" do
+    setup do
+      num1 = Unit::Mass.new(2, 'mg')
+      num2 = Unit::Mass.new('.02', 'mcg')
+      denom = Unit::Volume.new(1, 'ml')
+      @con1 = Unit::Concentration.new(num1, denom)
+      @con2 = Unit::Concentration.new(num2, denom)
+    end
+
+    should "correctly compare equivalent concentrations" do
+      @con1.eql?(@con2)
+    end
+  end
 end
