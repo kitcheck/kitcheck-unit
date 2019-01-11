@@ -14,7 +14,7 @@ macro
 
 rule
   {BLANK}
-  {SCALAR}      { [:SCALAR, BigDecimal.new(text, 10)] }
+  {SCALAR}      { [:SCALAR, BigDecimal(text, 10)] }
   {COLON}       { [:COLON, text] }
   {SEPERATOR}   { [:SEPERATOR, text] }
 
