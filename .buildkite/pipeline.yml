@@ -6,3 +6,5 @@ steps:
     plugins:
       - ecr#v1.2.0:
           login: true
+    env:
+      BUILDKITE_DOCKER: true
