@@ -4,7 +4,7 @@ steps:
     agents:
       queue: 'testscripts42'
     plugins:
-      - ecr#v1.2.0:
-          login: true
-      - docker-compose#v3.0.0:
+      ecr#v1.2.0:
+        login: true
+      docker-compose#v3.0.0:
         run: bash
