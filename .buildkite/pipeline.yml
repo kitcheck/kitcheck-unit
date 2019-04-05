@@ -6,3 +6,5 @@ steps:
     plugins:
       - ecr#v1.2.0:
           login: true
+      - docker-compose#v3.0.0:
+        run: bash
