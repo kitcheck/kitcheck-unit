@@ -1,3 +1,6 @@
+agents:
+  queue: 'testscripts42'
+
 steps:
   - name: 'Unit Test :boom:'
     command: bundle exec rake test
