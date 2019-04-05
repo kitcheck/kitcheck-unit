@@ -3,5 +3,3 @@ steps:
     command: bundle exec rake test
     agents:
       queue: 'testscripts42'
-    env:
-      BUILDKITE_DOCKER: true
