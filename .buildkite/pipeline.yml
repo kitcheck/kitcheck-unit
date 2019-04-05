@@ -1,5 +1,10 @@
 steps:
   - name: 'Unit Test :boom:'
     command: bundle exec rake test
-    env:
-      BUILDKITE_DOCKER: true
+    agents:
+      queue: 'testscripts42'
+    plugins:
+      ecr#v1.2.0:
+        login: true
+      docker-compose#v3.0.3:
+        run: bash
