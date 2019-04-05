@@ -3,3 +3,6 @@ steps:
     command: bundle exec rake test
     agents:
       queue: 'testscripts42'
+    plugins:
+      - ecr#v1.2.0:
+          login: true
