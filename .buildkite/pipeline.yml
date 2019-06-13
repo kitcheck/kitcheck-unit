@@ -2,7 +2,7 @@ steps:
   - name: 'Unit Test :boom:'
     command: bundle exec rake test
     agents:
-      queue: 'testscripts42'
+      queue: $QUEUE_NAME
     plugins:
       ecr#v1.2.0:
         login: true
