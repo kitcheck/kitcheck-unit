@@ -45,6 +45,13 @@ class ParserTest < Minitest::Test
         assert_equal "mg", mass.uom
       end
 
+      should "Handle scientific notation" do
+        mass = Unit.parse("5.0E-3mg")
+        assert_equal true, mass.mass?
+        assert_equal 0.005, mass.scalar
+        assert_equal "mg", mass.uom
+      end
+
       should "parse gm" do
         mass = Unit.parse('5 gm')
 
@@ -60,6 +67,13 @@ class ParserTest < Minitest::Test
 
         assert_equal true, vol.volume?
         assert_equal 3.0, vol.scalar
+        assert_equal "ml", vol.uom
+      end
+
+      should "Handle scientific notation" do
+        vol = Unit.parse("5e2ml")
+        assert_equal true, vol.volume?
+        assert_equal 500, vol.scalar
         assert_equal "ml", vol.uom
       end
 
@@ -81,7 +95,7 @@ class ParserTest < Minitest::Test
         assert_equal "mg/ml", conc.uom
       end
 
-      should "parse a concentration with no scalar denominator qqq" do
+      should "parse a concentration with no scalar denominator" do
         conc = Unit.parse("5 mg/ml")
 
         assert_equal true, conc.concentration?
@@ -104,16 +118,6 @@ class ParserTest < Minitest::Test
 
         assert_equal true, conc.concentration?
         assert_equal 1, conc.scalar
-        assert_equal "mg/ml", conc.uom
-      end
-    end
-
-    context "mixed solution" do
-      should "parse a mixed solution" do
-        conc = Unit.parse('1%-1:1000')
-
-        assert_equal true, conc.concentration?
-        assert_equal 11, conc.scalar
         assert_equal "mg/ml", conc.uom
       end
     end
