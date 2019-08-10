@@ -60,7 +60,7 @@ class Unit::Lexer < Racc::Parser
                   when (text = @ss.scan(/[ \t]+/i))
                     ;
 
-                  when (text = @ss.scan(/-?\d\.?\d*[Ee][\+\-]?\d+/i))
+                  when (text = @ss.scan(/-?[\d.]+\d*[Ee][\+\-]?\d+/i))
                      action { [:SCALAR, BigDecimal.new(text, 10)] }
 
                   when (text = @ss.scan(/[-+]?[0-9]*\.?[0-9]+/i))

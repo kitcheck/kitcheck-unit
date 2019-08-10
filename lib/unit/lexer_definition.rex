@@ -3,7 +3,7 @@ option
   ignorecase
 macro
   BLANK       [\ \t]+
-  SCIENTIFIC  -?\d\.?\d*[Ee][\+\-]?\d+
+  SCIENTIFIC  -?[\d.]+\d*[Ee][\+\-]?\d+
   SCALAR      [-+]?[0-9]*\.?[0-9]+
   MASS_UOM    \b(?:mcg|mg|g)\b
   VOLUME_UOM  \b(?:ml|l)\b
