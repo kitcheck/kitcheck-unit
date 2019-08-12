@@ -3,6 +3,7 @@ option
   ignorecase
 macro
   BLANK       [\ \t]+
+  SCIENTIFIC  -?[\d.]+\d*[Ee][\+\-]?\d+
   SCALAR      [-+]?[0-9]*\.?[0-9]+
   MASS_UOM    \b(?:mcg|mg|g)\b
   VOLUME_UOM  \b(?:ml|l)\b
@@ -10,13 +11,12 @@ macro
   UNITLESS_UOM \b(?:each|ea)\b
   EQUIVALENCE_UOM \b(?:meq|eq)\b
   COLON       [:]
-  SEPERATOR [@]
 
 rule
   {BLANK}
+  {SCIENTIFIC}  { [:SCALAR, BigDecimal.new(text, 10)] }
   {SCALAR}      { [:SCALAR, BigDecimal.new(text, 10)] }
   {COLON}       { [:COLON, text] }
-  {SEPERATOR}   { [:SEPERATOR, text] }
 
   #Mass
   \b(?:gm|gram)\b    { [:MASS_UOM, 'g'] }

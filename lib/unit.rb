@@ -14,10 +14,6 @@ require 'strscan'
 
 module Unit
   def self.parse(string)
-    #This is a magic gsub to turn separators into @ symbols.
-    #This will break if you expect a negative number after the initial scalar
-    #e.g. 1%-1:-1000
-    string.gsub!(/(?!^)-/, '@')
     tokens = Lexer.new.tokenize(string)
     Parser.new.parse(tokens)
   rescue
