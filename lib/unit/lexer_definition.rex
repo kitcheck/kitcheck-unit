@@ -7,6 +7,7 @@ macro
   SCALAR      [-+]?[0-9]*\.?[0-9]+
   MASS_UOM    \b(?:mcg|mg|g)\b
   VOLUME_UOM  \b(?:ml|l)\b
+  TIME_UOM    \b(?:hr)\b
   UNIT_UOM    \b(?:unit|u)\b
   UNITLESS_UOM \b(?:each|ea)\b
   EQUIVALENCE_UOM \b(?:meq|eq)\b
@@ -24,6 +25,9 @@ rule
 
   #Volume
   {VOLUME_UOM}  { [:VOLUME_UOM, text] }
+
+  #Time
+  {TIME_UOM}  { [:TIME_UOM, text] }
 
   #Unit
   {UNIT_UOM}    { [:UNIT_UOM, text] }

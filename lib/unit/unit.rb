@@ -22,8 +22,10 @@ module Unit
 
     def /(other)
       check_compatibility("divide", other)
-      if other.is_a?(Volume)
+      if other.is_a?(Volume) 
         Concentration.new(self, other)
+      elsif other.is_a?(Time)
+        Rate.new(self,other)
       else
         super(other)
       end

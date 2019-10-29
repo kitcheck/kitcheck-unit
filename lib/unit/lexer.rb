@@ -78,6 +78,9 @@ class Unit::Lexer < Racc::Parser
                   when (text = @ss.scan(/\b(?:ml|l)\b/i))
                      action { [:VOLUME_UOM, text] }
 
+                  when (text = @ss.scan(/\b(?:hr)\b/i))
+                     action { [:TIME_UOM, text] }
+
                   when (text = @ss.scan(/\b(?:unit|u)\b/i))
                      action { [:UNIT_UOM, text] }
 

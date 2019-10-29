@@ -8,6 +8,8 @@ module Unit
         super(other)
       elsif other.is_a? Volume
         Concentration.new(self, other)
+      elsif other.is_a? Time
+        Rate.new(self, other)
       else
         raise IncompatibleUnitsError.new("These units are incompatible (#{self.to_s} and #{other.to_s})")
       end
