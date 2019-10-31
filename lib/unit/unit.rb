@@ -4,7 +4,8 @@ module Unit
     def self.scale_hash
       {
         'unit' => 0,
-        'ea' => 0
+        'ea' => 0,
+        'patch' => 0
       }
     end
 
@@ -22,7 +23,7 @@ module Unit
 
     def /(other)
       check_compatibility("divide", other)
-      if other.is_a?(Volume) 
+      if other.is_a?(Volume)
         Concentration.new(self, other)
       elsif other.is_a?(Time)
         Rate.new(self,other)
