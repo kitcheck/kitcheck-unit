@@ -102,6 +102,15 @@ class ParserTest < Minitest::Test
         assert_equal 3.0, time.scalar
         assert_equal "hr", time.uom
       end
+
+      should "parse a time with a decimal" do
+        time = Unit.parse(".3hr")
+
+        assert_equal true, time.time?
+        assert_equal 0.3, time.scalar
+        assert_equal "hr", time.uom
+      end
+
     end
 
     context "concentration" do
