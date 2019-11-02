@@ -102,6 +102,15 @@ class ParserTest < Minitest::Test
         assert_equal 3.0, time.scalar
         assert_equal "hr", time.uom
       end
+
+      should "parse a time with a decimal" do
+        time = Unit.parse(".3hr")
+
+        assert_equal true, time.time?
+        assert_equal 0.3, time.scalar
+        assert_equal "hr", time.uom
+      end
+
     end
 
     context "concentration" do
@@ -155,6 +164,18 @@ class ParserTest < Minitest::Test
         assert_equal true, conc.concentration?
         assert_equal 1, conc.scalar
         assert_equal "mg/ml", conc.uom
+      end
+    end
+
+    context "patch" do
+      should "parse a patch object" do
+        ['1 patch', '1 ptch'].each do |str|
+          unit = Unit.parse(str)
+
+          assert_equal true, unit.unit?
+          assert_equal 1, unit.scalar
+          assert_equal 'patch', unit.uom
+        end
       end
     end
 

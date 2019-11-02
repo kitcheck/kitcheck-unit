@@ -4,9 +4,9 @@ class TimeTest < Minitest::Test
   context "addition" do
     should "add two time units together" do
       u1 = Unit::Time.new(5, 'hr')
-      u2 = Unit::Time.new(3, 'hr')
+      u2 = Unit::Time.new(0.5, 'hr')
       combined_unit = u1 + u2
-      assert_equal 8, combined_unit.scalar.to_f
+      assert_equal 5.5, combined_unit.scalar.to_f
       assert_equal 'hr', combined_unit.uom
     end
 

@@ -8,7 +8,8 @@ macro
   MASS_UOM    \b(?:mcg|mg|g)\b
   VOLUME_UOM  \b(?:ml|l)\b
   TIME_UOM    \b(?:hr)\b
-  UNIT_UOM    \b(?:unit|u|patch)\b
+  PATCH_UOM   \b(?:patch|ptch)\b
+  UNIT_UOM    \b(?:unit|u)\b
   UNITLESS_UOM \b(?:each|ea)\b
   EQUIVALENCE_UOM \b(?:meq|eq)\b
   COLON       [:]
@@ -28,6 +29,9 @@ rule
 
   #Time
   {TIME_UOM}  { [:TIME_UOM, text] }
+
+  #PATCH
+  {PATCH_UOM}    { [:PATCH_UOM, 'patch'] }
 
   #Unit
   {UNIT_UOM}    { [:UNIT_UOM, text] }

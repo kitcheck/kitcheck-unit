@@ -81,7 +81,10 @@ class Unit::Lexer < Racc::Parser
                   when (text = @ss.scan(/\b(?:hr)\b/i))
                      action { [:TIME_UOM, text] }
 
-                  when (text = @ss.scan(/\b(?:unit|u|patch)\b/i))
+                  when (text = @ss.scan(/\b(?:patch|ptch)\b/i))
+                     action { [:PATCH_UOM, 'patch'] }
+
+                  when (text = @ss.scan(/\b(?:unit|u)\b/i))
                      action { [:UNIT_UOM, text] }
 
                   when (text = @ss.scan(/\b(?:each|ea)\b/i))
