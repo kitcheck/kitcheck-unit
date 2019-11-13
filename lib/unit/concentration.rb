@@ -116,6 +116,14 @@ module Unit
       false
     end
 
+    def time?
+      false
+    end
+
+    def rate?
+      false
+    end
+
     def unit?
       false
     end

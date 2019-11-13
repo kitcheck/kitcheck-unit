@@ -1,5 +1,5 @@
 class Unit::Parser
-token SCALAR MASS_UOM VOLUME_UOM UNIT_UOM UNITLESS_UOM EQUIVALENCE_UOM PERCENT SLASH COLON
+token SCALAR MASS_UOM VOLUME_UOM TIME_UOM PATCH_UOM UNIT_UOM UNITLESS_UOM EQUIVALENCE_UOM PERCENT SLASH COLON
 rule
   valid_unit:
     concentration |
@@ -8,13 +8,19 @@ rule
     unit_concentration_no_denom_scalar |
     unit_less_concentration |
     unit_less_concentration_no_denom_scalar |
+    rate |
+    rate_no_denom_scalar |
+    volume_rate |
+    volume_rate_no_denom_scalar |
     equivalence_concentration |
     equivalence_concentration_no_denom_scalar |
     rational_concentration |
     mass |
     volume |
+    time |
     unit |
     unitless |
+    patch |
     equivalence |
     percent |
     solution
@@ -32,9 +38,19 @@ rule
   unit_less_concentration : unitless SLASH volume { return Concentration.new(val[0], val[2]) }
   unit_less_concentration_no_denom_scalar : unitless SLASH VOLUME_UOM { return Concentration.new(val[0], val[2]) }
 
+  rate : mass SLASH time { return Rate.new(val[0], val[2])}
+  rate_no_denom_scalar : mass SLASH TIME_UOM { return Rate.new(val[0], Time.new(1, val[2])) }
+
+  volume_rate : volume SLASH time { return Rate.new(val[0], val[2])}
+  volume_rate_no_denom_scalar : volume SLASH TIME_UOM { return Rate.new(val[0], Time.new(1, val[2])) }
+
   mass : SCALAR MASS_UOM { return Mass.new(val[0], val[1]) }
 
   volume : SCALAR VOLUME_UOM { return Volume.new(val[0], val[1]) }
+
+  time : SCALAR TIME_UOM { return Time.new(val[0], val[1]) }
+
+  patch : SCALAR PATCH_UOM { return Unit.new(val[0], 'patch') }
 
   unit : SCALAR UNIT_UOM { return Unit.new(val[0], 'unit') }
 

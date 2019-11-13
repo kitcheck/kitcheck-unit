@@ -86,6 +86,33 @@ class ParserTest < Minitest::Test
       end
     end
 
+    context "time" do
+      should "parse a time" do
+        time = Unit.parse("3 hr")
+
+        assert_equal true, time.time?
+        assert_equal 3.0, time.scalar
+        assert_equal "hr", time.uom
+      end
+
+      should "parse a time without a space" do
+        time = Unit.parse("3hr")
+
+        assert_equal true, time.time?
+        assert_equal 3.0, time.scalar
+        assert_equal "hr", time.uom
+      end
+
+      should "parse a time with a decimal" do
+        time = Unit.parse(".3hr")
+
+        assert_equal true, time.time?
+        assert_equal 0.3, time.scalar
+        assert_equal "hr", time.uom
+      end
+
+    end
+
     context "concentration" do
       should "parse a normal concentration" do
         conc = Unit.parse("5 mg / 2 ml")
@@ -112,6 +139,24 @@ class ParserTest < Minitest::Test
       end
     end
 
+    context "rate" do
+      should "parse a normal rate" do
+        rate = Unit.parse("5 mg / 1 hr")
+        
+        assert_equal true, rate.rate?
+        assert_equal 5, rate.scalar
+        assert_equal "mg/hr", rate.uom
+      end
+
+      should "parse a rate with no scalar denominator" do
+        rate = Unit.parse("5 mg/hr")
+
+        assert_equal true, rate.rate?
+        assert_equal 5, rate.scalar
+        assert_equal "mg/hr", rate.uom
+      end
+    end
+
     context "solution" do
       should "parse a normal solution" do
         conc = Unit.parse("1:1000")
@@ -119,6 +164,18 @@ class ParserTest < Minitest::Test
         assert_equal true, conc.concentration?
         assert_equal 1, conc.scalar
         assert_equal "mg/ml", conc.uom
+      end
+    end
+
+    context "patch" do
+      should "parse a patch object" do
+        ['1 patch', '1 ptch'].each do |str|
+          unit = Unit.parse(str)
+
+          assert_equal true, unit.unit?
+          assert_equal 1, unit.scalar
+          assert_equal 'patch', unit.uom
+        end
       end
     end
 

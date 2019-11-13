@@ -132,6 +132,10 @@ module Unit
       Volume.scale_hash.keys.include? self.uom
     end
 
+    def time?
+      Time.scale_hash.keys.include? self.uom
+    end
+
     def unit?
       Unit.scale_hash.keys.include? self.uom
     end
@@ -150,6 +154,10 @@ module Unit
     end
 
     def concentration?
+      false
+    end
+
+    def rate?
       false
     end
 

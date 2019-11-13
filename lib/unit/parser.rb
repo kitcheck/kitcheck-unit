@@ -11,7 +11,7 @@ require 'racc/parser.rb'
 module Unit
   class Parser < Racc::Parser
 
-module_eval(<<'...end parser_definition.y/module_eval...', 'parser_definition.y', 56)
+module_eval(<<'...end parser_definition.y/module_eval...', 'parser_definition.y', 72)
   def parse(input)
     #Takes the results from the lexer's tokenize method and returns stuff
     @tokens = input
@@ -25,85 +25,107 @@ module_eval(<<'...end parser_definition.y/module_eval...', 'parser_definition.y'
 ##### State transition tables begin ###
 
 racc_action_table = [
-    25,    26,    27,    28,    30,    29,    24,    31,    35,    35,
-    39,    41,    35,    35,    34,    37,    18,    22,    32,    21,
-    23,    20,    19,    42,    43,    26,    44,    45,    46 ]
+    32,    33,    34,    35,    36,    37,    39,    38,    31,    40,
+    46,    49,    43,    45,    48,    52,    52,    54,    56,    52,
+    24,    51,    33,    34,    41,    29,    28,    30,    27,    26,
+    57,    58,    25,    34,    33,    59,    60,    61 ]
 
 racc_action_check = [
-    18,    18,    18,    18,    18,    18,    18,    18,    22,    23,
-    22,    23,    20,    21,    20,    21,     0,    14,    19,    13,
-    15,    11,     1,    24,    31,    35,    42,    44,    45 ]
+    24,    24,    24,    24,    24,    24,    24,    24,    24,    24,
+    26,    27,    26,    26,    27,    29,    30,    29,    30,    28,
+     0,    28,    46,    46,    25,    19,    18,    21,    16,    15,
+    31,    40,     1,    49,    52,    57,    59,    60 ]
 
 racc_action_pointer = [
-    14,    22,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,
-   nil,    12,   nil,    10,     8,    11,   nil,   nil,    -3,    18,
-    10,    11,     6,     7,    21,   nil,   nil,   nil,   nil,   nil,
-   nil,    22,   nil,   nil,   nil,    21,   nil,   nil,   nil,   nil,
-   nil,   nil,    23,   nil,    18,    24,   nil ]
+    18,    32,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,
+   nil,   nil,   nil,   nil,   nil,    18,    17,   nil,    15,    14,
+   nil,    16,   nil,   nil,    -3,    24,     8,     9,    17,    13,
+    14,    28,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,
+    29,   nil,   nil,   nil,   nil,   nil,    18,   nil,   nil,    28,
+   nil,   nil,    30,   nil,   nil,   nil,   nil,    32,   nil,    25,
+    33,   nil ]
 
 racc_action_default = [
-   -33,   -33,    -1,    -2,    -3,    -4,    -5,    -6,    -7,    -8,
-    -9,   -10,   -11,   -12,   -13,   -14,   -15,   -16,   -33,   -33,
-   -33,   -33,   -33,   -33,   -33,   -26,   -27,   -28,   -29,   -30,
-   -31,   -33,    47,   -17,   -18,   -33,   -20,   -21,   -24,   -25,
-   -22,   -23,   -33,   -32,   -33,   -33,   -19 ]
+   -45,   -45,    -1,    -2,    -3,    -4,    -5,    -6,    -7,    -8,
+    -9,   -10,   -11,   -12,   -13,   -14,   -15,   -16,   -17,   -18,
+   -19,   -20,   -21,   -22,   -45,   -45,   -45,   -45,   -45,   -45,
+   -45,   -45,   -36,   -37,   -38,   -39,   -40,   -41,   -42,   -43,
+   -45,    62,   -23,   -24,   -32,   -33,   -45,   -34,   -35,   -45,
+   -26,   -27,   -45,   -30,   -31,   -28,   -29,   -45,   -44,   -45,
+   -45,   -25 ]
 
 racc_goto_table = [
-    12,     9,     3,     4,     5,     6,     7,     8,     2,    10,
-    11,     1,    13,    14,    15,    16,    17,   nil,   nil,   nil,
-    33,    36,    38,    40 ]
+    16,    12,     4,     5,     6,    17,     7,     8,     9,    10,
+    11,     3,    13,    14,    15,     1,     2,    18,    19,    20,
+    21,    22,    23,   nil,   nil,   nil,    42,   nil,    50,    53,
+    55,    44,    47 ]
 
 racc_goto_check = [
-    12,     9,     3,     4,     5,     6,     7,     8,     2,    10,
-    11,     1,    13,    14,    15,    16,    17,   nil,   nil,   nil,
-    12,    12,    12,    12 ]
+    16,    12,     4,     5,     6,    17,     7,     8,     9,    10,
+    11,     3,    13,    14,    15,     1,     2,    18,    19,    20,
+    21,    22,    23,   nil,   nil,   nil,    16,   nil,    16,    16,
+    16,    17,    17 ]
 
 racc_goto_pointer = [
-   nil,    11,     8,     2,     3,     4,     5,     6,     7,     1,
-     9,    10,     0,    12,    13,    14,    15,    16 ]
+   nil,    15,    16,    11,     2,     3,     4,     6,     7,     8,
+     9,    10,     1,    12,    13,    14,     0,     5,    17,    18,
+    19,    20,    21,    22 ]
 
 racc_goto_default = [
    nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,
-   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil ]
+   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,
+   nil,   nil,   nil,   nil ]
 
 racc_reduce_table = [
   0, 0, :racc_error,
-  1, 12, :_reduce_none,
-  1, 12, :_reduce_none,
-  1, 12, :_reduce_none,
-  1, 12, :_reduce_none,
-  1, 12, :_reduce_none,
-  1, 12, :_reduce_none,
-  1, 12, :_reduce_none,
-  1, 12, :_reduce_none,
-  1, 12, :_reduce_none,
-  1, 12, :_reduce_none,
-  1, 12, :_reduce_none,
-  1, 12, :_reduce_none,
-  1, 12, :_reduce_none,
-  1, 12, :_reduce_none,
-  1, 12, :_reduce_none,
-  1, 12, :_reduce_none,
-  3, 13, :_reduce_17,
-  3, 14, :_reduce_18,
-  6, 21, :_reduce_19,
-  3, 15, :_reduce_20,
-  3, 16, :_reduce_21,
-  3, 19, :_reduce_22,
-  3, 20, :_reduce_23,
-  3, 17, :_reduce_24,
-  3, 18, :_reduce_25,
-  2, 22, :_reduce_26,
-  2, 23, :_reduce_27,
-  2, 24, :_reduce_28,
-  2, 25, :_reduce_29,
-  2, 27, :_reduce_30,
-  2, 26, :_reduce_31,
-  3, 28, :_reduce_32 ]
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  1, 14, :_reduce_none,
+  3, 15, :_reduce_23,
+  3, 16, :_reduce_24,
+  6, 27, :_reduce_25,
+  3, 17, :_reduce_26,
+  3, 18, :_reduce_27,
+  3, 25, :_reduce_28,
+  3, 26, :_reduce_29,
+  3, 19, :_reduce_30,
+  3, 20, :_reduce_31,
+  3, 21, :_reduce_32,
+  3, 22, :_reduce_33,
+  3, 23, :_reduce_34,
+  3, 24, :_reduce_35,
+  2, 28, :_reduce_36,
+  2, 29, :_reduce_37,
+  2, 30, :_reduce_38,
+  2, 33, :_reduce_39,
+  2, 31, :_reduce_40,
+  2, 32, :_reduce_41,
+  2, 35, :_reduce_42,
+  2, 34, :_reduce_43,
+  3, 36, :_reduce_44 ]
 
-racc_reduce_n = 33
+racc_reduce_n = 45
 
-racc_shift_n = 47
+racc_shift_n = 62
 
 racc_token_table = {
   false => 0,
@@ -111,14 +133,16 @@ racc_token_table = {
   :SCALAR => 2,
   :MASS_UOM => 3,
   :VOLUME_UOM => 4,
-  :UNIT_UOM => 5,
-  :UNITLESS_UOM => 6,
-  :EQUIVALENCE_UOM => 7,
-  :PERCENT => 8,
-  :SLASH => 9,
-  :COLON => 10 }
+  :TIME_UOM => 5,
+  :PATCH_UOM => 6,
+  :UNIT_UOM => 7,
+  :UNITLESS_UOM => 8,
+  :EQUIVALENCE_UOM => 9,
+  :PERCENT => 10,
+  :SLASH => 11,
+  :COLON => 12 }
 
-racc_nt_base = 11
+racc_nt_base = 13
 
 racc_use_result_var = true
 
@@ -144,6 +168,8 @@ Racc_token_to_s_table = [
   "SCALAR",
   "MASS_UOM",
   "VOLUME_UOM",
+  "TIME_UOM",
+  "PATCH_UOM",
   "UNIT_UOM",
   "UNITLESS_UOM",
   "EQUIVALENCE_UOM",
@@ -158,13 +184,19 @@ Racc_token_to_s_table = [
   "unit_concentration_no_denom_scalar",
   "unit_less_concentration",
   "unit_less_concentration_no_denom_scalar",
+  "rate",
+  "rate_no_denom_scalar",
+  "volume_rate",
+  "volume_rate_no_denom_scalar",
   "equivalence_concentration",
   "equivalence_concentration_no_denom_scalar",
   "rational_concentration",
   "mass",
   "volume",
+  "time",
   "unit",
   "unitless",
+  "patch",
   "equivalence",
   "percent",
   "solution" ]
@@ -207,113 +239,167 @@ Racc_debug_parser = false
 
 # reduce 16 omitted
 
-module_eval(<<'.,.,', 'parser_definition.y', 21)
-  def _reduce_17(val, _values, result)
+# reduce 17 omitted
+
+# reduce 18 omitted
+
+# reduce 19 omitted
+
+# reduce 20 omitted
+
+# reduce 21 omitted
+
+# reduce 22 omitted
+
+module_eval(<<'.,.,', 'parser_definition.y', 27)
+  def _reduce_23(val, _values, result)
      return Concentration.new(val[0], val[2]) 
-    result
-  end
-.,.,
-
-module_eval(<<'.,.,', 'parser_definition.y', 22)
-  def _reduce_18(val, _values, result)
-     return Concentration.new(val[0], Volume.new(1, val[2])) 
-    result
-  end
-.,.,
-
-module_eval(<<'.,.,', 'parser_definition.y', 23)
-  def _reduce_19(val, _values, result)
-     return Concentration.new(Mass.new(val[0], val[3]), Volume.new(val[2], val[5])) 
-    result
-  end
-.,.,
-
-module_eval(<<'.,.,', 'parser_definition.y', 25)
-  def _reduce_20(val, _values, result)
-     return Concentration.new(val[0], val[2]) 
-    result
-  end
-.,.,
-
-module_eval(<<'.,.,', 'parser_definition.y', 26)
-  def _reduce_21(val, _values, result)
-     return Concentration.new(val[0], Volume.new(1, val[2])) 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser_definition.y', 28)
-  def _reduce_22(val, _values, result)
-     return Concentration.new(val[0], val[2]) 
-    result
-  end
-.,.,
-
-module_eval(<<'.,.,', 'parser_definition.y', 29)
-  def _reduce_23(val, _values, result)
+  def _reduce_24(val, _values, result)
      return Concentration.new(val[0], Volume.new(1, val[2])) 
     result
   end
 .,.,
 
+module_eval(<<'.,.,', 'parser_definition.y', 29)
+  def _reduce_25(val, _values, result)
+     return Concentration.new(Mass.new(val[0], val[3]), Volume.new(val[2], val[5])) 
+    result
+  end
+.,.,
+
 module_eval(<<'.,.,', 'parser_definition.y', 31)
-  def _reduce_24(val, _values, result)
+  def _reduce_26(val, _values, result)
      return Concentration.new(val[0], val[2]) 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser_definition.y', 32)
-  def _reduce_25(val, _values, result)
-     return Concentration.new(val[0], val[2]) 
+  def _reduce_27(val, _values, result)
+     return Concentration.new(val[0], Volume.new(1, val[2])) 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser_definition.y', 34)
-  def _reduce_26(val, _values, result)
-     return Mass.new(val[0], val[1]) 
+  def _reduce_28(val, _values, result)
+     return Concentration.new(val[0], val[2]) 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'parser_definition.y', 36)
-  def _reduce_27(val, _values, result)
-     return Volume.new(val[0], val[1]) 
+module_eval(<<'.,.,', 'parser_definition.y', 35)
+  def _reduce_29(val, _values, result)
+     return Concentration.new(val[0], Volume.new(1, val[2])) 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'parser_definition.y', 37)
+  def _reduce_30(val, _values, result)
+     return Concentration.new(val[0], val[2]) 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser_definition.y', 38)
-  def _reduce_28(val, _values, result)
-     return Unit.new(val[0], 'unit') 
+  def _reduce_31(val, _values, result)
+     return Concentration.new(val[0], val[2]) 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser_definition.y', 40)
-  def _reduce_29(val, _values, result)
-     return Unit.new(val[0], val[1]) 
+  def _reduce_32(val, _values, result)
+     return Rate.new(val[0], val[2])
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'parser_definition.y', 42)
-  def _reduce_30(val, _values, result)
-     return Concentration.new(Mass.new(val[0] * 10, 'mg'), Volume.new(1, 'ml')) 
+module_eval(<<'.,.,', 'parser_definition.y', 41)
+  def _reduce_33(val, _values, result)
+     return Rate.new(val[0], Time.new(1, val[2])) 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'parser_definition.y', 43)
+  def _reduce_34(val, _values, result)
+     return Rate.new(val[0], val[2])
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser_definition.y', 44)
-  def _reduce_31(val, _values, result)
-     return Equivalence.new(val[0], val[1]) 
+  def _reduce_35(val, _values, result)
+     return Rate.new(val[0], Time.new(1, val[2])) 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'parser_definition.y', 46)
-  def _reduce_32(val, _values, result)
+  def _reduce_36(val, _values, result)
+     return Mass.new(val[0], val[1]) 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'parser_definition.y', 48)
+  def _reduce_37(val, _values, result)
+     return Volume.new(val[0], val[1]) 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'parser_definition.y', 50)
+  def _reduce_38(val, _values, result)
+     return Time.new(val[0], val[1]) 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'parser_definition.y', 52)
+  def _reduce_39(val, _values, result)
+     return Unit.new(val[0], 'patch') 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'parser_definition.y', 54)
+  def _reduce_40(val, _values, result)
+     return Unit.new(val[0], 'unit') 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'parser_definition.y', 56)
+  def _reduce_41(val, _values, result)
+     return Unit.new(val[0], val[1]) 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'parser_definition.y', 58)
+  def _reduce_42(val, _values, result)
+     return Concentration.new(Mass.new(val[0] * 10, 'mg'), Volume.new(1, 'ml')) 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'parser_definition.y', 60)
+  def _reduce_43(val, _values, result)
+     return Equivalence.new(val[0], val[1]) 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'parser_definition.y', 62)
+  def _reduce_44(val, _values, result)
      return Concentration.new(Mass.new(val[0] * 1000, 'mg'), Volume.new(val[2], 'ml')) 
     result
   end
