@@ -6,7 +6,7 @@ module Unit
     attr_reader :scalar, :uom, :components
 
     def initialize(scalar, uom, components = [])
-      @scalar = BigDecimal.new(scalar, 10)
+      @scalar = BigDecimal(scalar, 10)
       @uom = validate_uom(uom)
       @components = [components].compact.flatten
     end
@@ -76,7 +76,7 @@ module Unit
 
     def scale(scale)
       if scale.is_a? Float
-        scale = BigDecimal.new(scale, 10)
+        scale = BigDecimal(scale, 10)
       end
       self.class.new(@scalar * scale, @uom, @components)
     end
@@ -107,7 +107,7 @@ module Unit
         source_exp = self.scale_hash[@uom]
         #Get difference in exponents
         exp_diff = source_exp - destination_exp
-        scaled_amount = @scalar * BigDecimal.new((10**exp_diff), 10)
+        scaled_amount = @scalar * BigDecimal((10**exp_diff), 10)
         #Return new unit
         self.class.new(scaled_amount, uom, @components)
       else

@@ -61,10 +61,10 @@ class Unit::Lexer < Racc::Parser
                     ;
 
                   when (text = @ss.scan(/-?[\d.]+\d*[Ee][\+\-]?\d+/i))
-                     action { [:SCALAR, BigDecimal.new(text, 10)] }
+                     action { [:SCALAR, BigDecimal(text, 10)] }
 
                   when (text = @ss.scan(/[-+]?[0-9]*\.?[0-9]+/i))
-                     action { [:SCALAR, BigDecimal.new(text, 10)] }
+                     action { [:SCALAR, BigDecimal(text, 10)] }
 
                   when (text = @ss.scan(/[:]/i))
                      action { [:COLON, text] }
