@@ -16,8 +16,8 @@ macro
 
 rule
   {BLANK}
-  {SCIENTIFIC}  { [:SCALAR, BigDecimal.new(text, 10)] }
-  {SCALAR}      { [:SCALAR, BigDecimal.new(text, 10)] }
+  {SCIENTIFIC}  { [:SCALAR, BigDecimal(text, 10)] }
+  {SCALAR}      { [:SCALAR, BigDecimal(text, 10)] }
   {COLON}       { [:COLON, text] }
 
   #Mass
