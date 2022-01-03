@@ -4,7 +4,7 @@ PATH
     kitcheck-unit (1.7.0)
 
 GEM
-  remote: http://gems.kitcheck.com/
+  remote: https://rubygems.org/
   specs:
     activesupport (5.2.3)
       concurrent-ruby (~> 1.0, >= 1.0.2)
