@@ -27,14 +27,14 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = '~> 2.0'
+  spec.required_ruby_version = '>= 3.0'
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "i18n", "1.5.1"
   spec.add_development_dependency "rake", "~> 11.1"
   spec.add_development_dependency "shoulda", "~> 3.5"
   spec.add_development_dependency 'pry', '~> 0.10'
-  spec.add_development_dependency 'pry-byebug', '2.0'
+  spec.add_development_dependency 'pry-byebug', '3.9'
   spec.add_development_dependency 'racc', "~> 1.4"
   spec.add_development_dependency 'rexical', "~> 1.0"
 end
