@@ -20,7 +20,8 @@ module Unit
       {
         'mcg' => -3,
         'mg' => 0,
-        'g' => 3
+        'g' => 3,
+        'kg' => 6,
       }
     end
   end
