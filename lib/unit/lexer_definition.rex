@@ -5,9 +5,9 @@ macro
   BLANK       [\ \t]+
   SCIENTIFIC  -?[\d.]+\d*[Ee][\+\-]?\d+
   SCALAR      [-+]?[0-9]*\.?[0-9]+
-  MASS_UOM    \b(?:mcg|mg|g)\b
+  MASS_UOM    \b(?:mcg|mg|g|kg)\b
   VOLUME_UOM  \b(?:ml|l)\b
-  TIME_UOM    \b(?:hr)\b
+  TIME_UOM    \b(?:min|hr)\b
   PATCH_UOM   \b(?:patch|ptch)\b
   UNIT_UOM    \b(?:unit|u)\b
   UNITLESS_UOM \b(?:each|ea)\b
