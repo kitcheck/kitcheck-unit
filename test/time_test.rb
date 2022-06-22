@@ -58,6 +58,24 @@ class TimeTest < Minitest::Test
   end
 
   context "conversion" do
-    #not converting between time units at this point. We only have hours. 
+    should "raise if invalid" do
+      assert_raises Unit::IncompatibleUnitsError do
+        Unit::Time.new(1, 'hr') >> 'mg'
+      end
+    end
+
+    should "convert correctly from mins to hours" do
+      new_time = Unit::Time.new(60, 'min') >> 'hr'
+
+      assert_equal 1, new_time.scalar
+      assert_equal 'hr', new_time.uom
+    end
+
+    should "convert correctly from hours to mins" do
+      new_time = Unit::Time.new(1, 'hr') >> 'min'
+
+      assert_equal 60, new_time.scalar
+      assert_equal 'min', new_time.uom
+    end
   end
 end

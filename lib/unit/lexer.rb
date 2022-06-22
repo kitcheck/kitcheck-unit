@@ -72,13 +72,13 @@ class Unit::Lexer < Racc::Parser
                   when (text = @ss.scan(/\b(?:gm|gram)\b/i))
                      action { [:MASS_UOM, 'g'] }
 
-                  when (text = @ss.scan(/\b(?:mcg|mg|g)\b/i))
+                  when (text = @ss.scan(/\b(?:mcg|mg|g|kg)\b/i))
                      action { [:MASS_UOM, text] }
 
                   when (text = @ss.scan(/\b(?:ml|l)\b/i))
                      action { [:VOLUME_UOM, text] }
 
-                  when (text = @ss.scan(/\b(?:hr)\b/i))
+                  when (text = @ss.scan(/\b(?:min|hr)\b/i))
                      action { [:TIME_UOM, text] }
 
                   when (text = @ss.scan(/\b(?:patch|ptch)\b/i))

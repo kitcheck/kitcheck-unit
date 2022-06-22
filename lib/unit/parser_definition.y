@@ -12,6 +12,7 @@ rule
     rate_no_denom_scalar |
     volume_rate |
     volume_rate_no_denom_scalar |
+    dosage_rate_no_denom_scalar |
     equivalence_concentration |
     equivalence_concentration_no_denom_scalar |
     rational_concentration |
@@ -43,6 +44,8 @@ rule
 
   volume_rate : volume SLASH time { return Rate.new(val[0], val[2])}
   volume_rate_no_denom_scalar : volume SLASH TIME_UOM { return Rate.new(val[0], Time.new(1, val[2])) }
+
+  dosage_rate_no_denom_scalar : mass SLASH MASS_UOM SLASH TIME_UOM { return Rate.new(val[0], Time.new(1, val[4])) }
 
   mass : SCALAR MASS_UOM { return Mass.new(val[0], val[1]) }
 
