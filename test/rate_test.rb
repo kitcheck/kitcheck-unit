@@ -273,7 +273,7 @@ class Rate < Minitest::Test
     setup do
       num1 = Unit::Mass.new(2, 'mg')
       num2 = Unit::Volume.new(2, 'ml')
-      
+
       denom = Unit::Time.new(1, 'hr')
       @rate = Unit::Rate.new(num1, denom)
       @volume_rate = Unit::Rate.new(num2, denom)
@@ -312,7 +312,7 @@ class Rate < Minitest::Test
     setup do
       num1 = Unit::Mass.new(2, 'mg')
       num2 = Unit::Volume.new(2, 'ml')
-      
+
       denom = Unit::Time.new(1, 'hr')
       @rate = Unit::Rate.new(num1, denom)
       @volume_rate = Unit::Rate.new(num2, denom)
@@ -396,6 +396,27 @@ class Rate < Minitest::Test
       new_rate = @rate >> 'l/2hr'
       assert_equal 1, new_rate.scalar
       assert_equal 'l/hr', new_rate.uom
+    end
+  end
+
+  context "conversion (time)" do
+    setup do
+      num1 = Unit::Mass.new(60, 'mg')
+      denom = Unit::Time.new(1, 'hr')
+      @rate = Unit::Rate.new(num1, denom)
+    end
+
+    should "raise if invalid" do
+      assert_raises Unit::IncompatibleUnitsError do
+        @rate >> 'mg'
+      end
+    end
+
+    should "convert correctly" do
+      new_rate = @rate >> 'mcg/min'
+
+      assert_equal 1000, new_rate.scalar
+      assert_equal 'mcg/min', new_rate.uom
     end
   end
 

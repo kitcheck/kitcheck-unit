@@ -142,7 +142,7 @@ class ParserTest < Minitest::Test
     context "rate" do
       should "parse a normal rate" do
         rate = Unit.parse("5 mg / 1 hr")
-        
+
         assert_equal true, rate.rate?
         assert_equal 5, rate.scalar
         assert_equal "mg/hr", rate.uom
@@ -153,6 +153,14 @@ class ParserTest < Minitest::Test
 
         assert_equal true, rate.rate?
         assert_equal 5, rate.scalar
+        assert_equal "mg/hr", rate.uom
+      end
+
+      should "parse a dosage rate with no scalar denominator" do
+        rate = Unit.parse("10 mg/kg/hr")
+
+        assert_equal true, rate.rate?
+        assert_equal 10, rate.scalar
         assert_equal "mg/hr", rate.uom
       end
     end
